@@ -169,11 +169,13 @@
             // 
             // textBoxQuantity
             // 
+            this.textBoxQuantity.Enabled = false;
             this.textBoxQuantity.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBoxQuantity.Location = new System.Drawing.Point(343, 127);
             this.textBoxQuantity.Name = "textBoxQuantity";
             this.textBoxQuantity.Size = new System.Drawing.Size(206, 27);
             this.textBoxQuantity.TabIndex = 3;
+            this.textBoxQuantity.TextChanged += new System.EventHandler(this.textBoxQuantity_TextChanged);
             // 
             // label8
             // 
@@ -193,6 +195,7 @@
             this.textBoxSubTotal.ReadOnly = true;
             this.textBoxSubTotal.Size = new System.Drawing.Size(206, 27);
             this.textBoxSubTotal.TabIndex = 4;
+            this.textBoxSubTotal.TextChanged += new System.EventHandler(this.textBoxSubTotal_TextChanged);
             // 
             // label9
             // 
@@ -212,6 +215,7 @@
             this.textBoxTax.ReadOnly = true;
             this.textBoxTax.Size = new System.Drawing.Size(206, 27);
             this.textBoxTax.TabIndex = 5;
+            this.textBoxTax.TextChanged += new System.EventHandler(this.textBoxTax_TextChanged);
             // 
             // label10
             // 
@@ -296,6 +300,7 @@
             this.comboBoxSelectItem.Name = "comboBoxSelectItem";
             this.comboBoxSelectItem.Size = new System.Drawing.Size(207, 28);
             this.comboBoxSelectItem.TabIndex = 0;
+            this.comboBoxSelectItem.SelectedIndexChanged += new System.EventHandler(this.comboBoxSelectItem_SelectedIndexChanged);
             // 
             // button1
             // 
