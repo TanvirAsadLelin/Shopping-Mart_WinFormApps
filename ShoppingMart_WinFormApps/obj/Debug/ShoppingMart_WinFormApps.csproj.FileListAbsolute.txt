@@ -1,0 +1,11 @@
+D:\My GitHub\My WinFormApps All Projects\ShoppingMart_WinFormApps\ShoppingMart_WinFormApps\bin\Debug\ShoppingMart_WinFormApps.exe.config
+D:\My GitHub\My WinFormApps All Projects\ShoppingMart_WinFormApps\ShoppingMart_WinFormApps\bin\Debug\ShoppingMart_WinFormApps.exe
+D:\My GitHub\My WinFormApps All Projects\ShoppingMart_WinFormApps\ShoppingMart_WinFormApps\bin\Debug\ShoppingMart_WinFormApps.pdb
+D:\My GitHub\My WinFormApps All Projects\ShoppingMart_WinFormApps\ShoppingMart_WinFormApps\obj\Debug\ShoppingMart_WinFormApps.csproj.AssemblyReference.cache
+D:\My GitHub\My WinFormApps All Projects\ShoppingMart_WinFormApps\ShoppingMart_WinFormApps\obj\Debug\ShoppingMart_WinFormApps.csproj.SuggestedBindingRedirects.cache
+D:\My GitHub\My WinFormApps All Projects\ShoppingMart_WinFormApps\ShoppingMart_WinFormApps\obj\Debug\ShoppingMart_WinFormApps.Form1.resources
+D:\My GitHub\My WinFormApps All Projects\ShoppingMart_WinFormApps\ShoppingMart_WinFormApps\obj\Debug\ShoppingMart_WinFormApps.Properties.Resources.resources
+D:\My GitHub\My WinFormApps All Projects\ShoppingMart_WinFormApps\ShoppingMart_WinFormApps\obj\Debug\ShoppingMart_WinFormApps.csproj.GenerateResource.cache
+D:\My GitHub\My WinFormApps All Projects\ShoppingMart_WinFormApps\ShoppingMart_WinFormApps\obj\Debug\ShoppingMart_WinFormApps.csproj.CoreCompileInputs.cache
+D:\My GitHub\My WinFormApps All Projects\ShoppingMart_WinFormApps\ShoppingMart_WinFormApps\obj\Debug\ShoppingMart_WinFormApps.exe
+D:\My GitHub\My WinFormApps All Projects\ShoppingMart_WinFormApps\ShoppingMart_WinFormApps\obj\Debug\ShoppingMart_WinFormApps.pdb
