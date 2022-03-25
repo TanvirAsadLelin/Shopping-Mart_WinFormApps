@@ -8,6 +8,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+using System.Configuration;
+using System.Data.SqlClient;
+
 namespace ShoppingMart_WinFormApps
 {
     public partial class Form1 : Form
