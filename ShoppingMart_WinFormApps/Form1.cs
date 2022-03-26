@@ -24,6 +24,7 @@ namespace ShoppingMart_WinFormApps
         public Form1()
         {
             InitializeComponent();
+            GetInvoiceID();
             textBoxUser.Text = LoginForm.username;
             GetItem();
             GridViewColumnAdd();
@@ -267,6 +268,31 @@ namespace ShoppingMart_WinFormApps
         {
             dataGridViewItemAdd.Rows.Clear();
             srNo = 0;
+        }
+
+        void GetInvoiceID()
+        {
+            SqlConnection con = new SqlConnection(cs);
+            string queryGetInvoice = "select Invoice_Id from OrderMaster_Tbl";
+            SqlDataAdapter sda = new SqlDataAdapter(queryGetInvoice, con);
+            DataTable dataTable = new DataTable();
+            sda.Fill(dataTable);
+
+            if(dataTable.Rows.Count < 1)
+            {
+                textBoxInvoiceNo.Text = "1";
+            }
+            else
+            {
+                string queryGetInvoice2 = "select max(Invoice_Id) from OrderMaster_Tbl";
+                SqlCommand cmd =  new SqlCommand(queryGetInvoice2, con);
+                con.Open();
+                int value = Convert.ToInt32(cmd.ExecuteScalar());
+
+                value = value + 1;
+                textBoxInvoiceNo.Text = value.ToString();
+                con.Close();
+            }
         }
     }
 }

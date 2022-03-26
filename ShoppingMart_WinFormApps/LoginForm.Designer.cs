@@ -53,6 +53,7 @@
             this.linkLabelForRegistered.TabIndex = 10;
             this.linkLabelForRegistered.TabStop = true;
             this.linkLabelForRegistered.Text = "Not Registered Yet ? Click here";
+            this.linkLabelForRegistered.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelForRegistered_LinkClicked);
             // 
             // pictureBox1
             // 

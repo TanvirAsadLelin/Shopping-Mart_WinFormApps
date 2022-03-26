@@ -24,7 +24,7 @@ namespace ShoppingMart_WinFormApps
         private void btnLogin_Click(object sender, EventArgs e)
         {
             SqlConnection con = new SqlConnection(cs);
-            string querySelect = "select * from Login_Tbl where Login_Username = @userName and Login_Password = @password ";
+            string querySelect = "select * from SignUp_Tbl where User_Name = @userName and User_Password = @password ";
             SqlCommand cmd = new SqlCommand(querySelect, con);
 
             cmd.Parameters.AddWithValue("@userName", textBoxUsername.Text);
@@ -67,6 +67,13 @@ namespace ShoppingMart_WinFormApps
             }
             
             
+        }
+
+        private void linkLabelForRegistered_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            SignUpForm signUpForm = new SignUpForm();
+            this.Hide();
+            signUpForm.ShowDialog();
         }
     }
 }
