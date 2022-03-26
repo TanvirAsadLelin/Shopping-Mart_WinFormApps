@@ -14,7 +14,9 @@ using System.Data.SqlClient;
 namespace ShoppingMart_WinFormApps
 {
     public partial class Form1 : Form
-    {
+    {   
+
+        int finalCost = 0;
         int srNo = 0;
         int tax = 0;
 
@@ -22,6 +24,7 @@ namespace ShoppingMart_WinFormApps
         public Form1()
         {
             InitializeComponent();
+            textBoxUser.Text = LoginForm.username;
             GetItem();
             GridViewColumnAdd();
         }
@@ -47,37 +50,53 @@ namespace ShoppingMart_WinFormApps
 
         void GetPrice()
         {
-            int price = 0;
-            SqlConnection con = new SqlConnection(cs);
-            string queryGetPrice = "select Item_Price from Items_Tbl where Item_Name = @itemName";
-            SqlDataAdapter sda = new SqlDataAdapter(queryGetPrice, con);
-            sda.SelectCommand.Parameters.AddWithValue("@itemName", comboBoxSelectItem.SelectedItem.ToString());
-            DataTable dataTable = new DataTable();
-            sda.Fill(dataTable);
-            if(dataTable.Rows.Count > 0)
+            if (comboBoxSelectItem.SelectedItem == null)
             {
-               price = Convert.ToInt32(dataTable.Rows[0]["Item_Price"]);
-            }
 
-            textBoxUnitPrice.Text = price.ToString();
+            }
+            else
+            {
+
+                int price = 0;
+                SqlConnection con = new SqlConnection(cs);
+                string queryGetPrice = "select Item_Price from Items_Tbl where Item_Name = @itemName";
+                SqlDataAdapter sda = new SqlDataAdapter(queryGetPrice, con);
+                sda.SelectCommand.Parameters.AddWithValue("@itemName", comboBoxSelectItem.SelectedItem.ToString());
+                DataTable dataTable = new DataTable();
+                sda.Fill(dataTable);
+                if (dataTable.Rows.Count > 0)
+                {
+                    price = Convert.ToInt32(dataTable.Rows[0]["Item_Price"]);
+                }
+
+                textBoxUnitPrice.Text = price.ToString();
+            }
 
         }
 
         void GetDiscount()
         {
-            int discount = 0;
-            SqlConnection con = new SqlConnection(cs);
-            string queryGetPrice = "select Item_Discount from Items_Tbl where Item_Name = @itemName";
-            SqlDataAdapter sda = new SqlDataAdapter(queryGetPrice, con);
-            sda.SelectCommand.Parameters.AddWithValue("@itemName", comboBoxSelectItem.SelectedItem.ToString());
-            DataTable dataTable = new DataTable();
-            sda.Fill(dataTable);
-            if (dataTable.Rows.Count > 0)
+            if (comboBoxSelectItem.SelectedItem == null)
             {
-                discount = Convert.ToInt32(dataTable.Rows[0]["Item_Discount"]);
-            }
 
-            textBoxDiscountPerItem.Text = discount.ToString();
+            }
+            else
+            {
+                int discount = 0;
+                SqlConnection con = new SqlConnection(cs);
+                string queryGetPrice = "select Item_Discount from Items_Tbl where Item_Name = @itemName";
+                SqlDataAdapter sda = new SqlDataAdapter(queryGetPrice, con);
+                sda.SelectCommand.Parameters.AddWithValue("@itemName", comboBoxSelectItem.SelectedItem.ToString());
+                DataTable dataTable = new DataTable();
+                sda.Fill(dataTable);
+                if (dataTable.Rows.Count > 0)
+                {
+                    discount = Convert.ToInt32(dataTable.Rows[0]["Item_Discount"]);
+                }
+
+                textBoxDiscountPerItem.Text = discount.ToString();
+
+            }
 
         }
 
@@ -90,58 +109,80 @@ namespace ShoppingMart_WinFormApps
 
         private void textBoxQuantity_TextChanged(object sender, EventArgs e)
         {
-            int price = Convert.ToInt32(textBoxUnitPrice.Text);
-            int discount = Convert.ToInt32(textBoxDiscountPerItem.Text);
-            int quantity = Convert.ToInt32(textBoxQuantity.Text);
 
-            int subTotal = price * quantity;
-            subTotal = subTotal - discount * quantity;
+            if (string.IsNullOrEmpty(textBoxQuantity.Text) == true)
+            {
 
-            textBoxSubTotal.Text = subTotal.ToString();
+            }
+            else
+            {
+
+                int price = Convert.ToInt32(textBoxUnitPrice.Text);
+                int discount = Convert.ToInt32(textBoxDiscountPerItem.Text);
+                int quantity = Convert.ToInt32(textBoxQuantity.Text);
+
+                int subTotal = price * quantity;
+                subTotal = subTotal - discount * quantity;
+
+                textBoxSubTotal.Text = subTotal.ToString();
+            }
 
         }
 
         private void textBoxSubTotal_TextChanged(object sender, EventArgs e)
         {
-            int subTotal = Convert.ToInt32(textBoxSubTotal.Text);
-
-            if (subTotal >= 2000)
+            if (string.IsNullOrEmpty(textBoxSubTotal.Text) == true)
             {
-                tax = (int)(subTotal * 0.05);
 
-                textBoxTax.Text = tax.ToString();
-            }
-            else if (subTotal >= 5000)
-            {
-                tax = (int)(subTotal * 0.10);
-
-                textBoxTax.Text = tax.ToString();
-            }
-            else if (subTotal >= 10000)
-            {
-                tax = (int)(subTotal * 0.20);
-
-                textBoxTax.Text = tax.ToString();
             }
             else
             {
-                tax = (int)(subTotal * 0.03);
+                int subTotal = Convert.ToInt32(textBoxSubTotal.Text);
 
-                textBoxTax.Text = tax.ToString();
+                if (subTotal >= 2000)
+                {
+                    tax = (int)(subTotal * 0.05);
+
+                    textBoxTax.Text = tax.ToString();
+                }
+                else if (subTotal >= 5000)
+                {
+                    tax = (int)(subTotal * 0.10);
+
+                    textBoxTax.Text = tax.ToString();
+                }
+                else if (subTotal >= 10000)
+                {
+                    tax = (int)(subTotal * 0.20);
+
+                    textBoxTax.Text = tax.ToString();
+                }
+                else
+                {
+                    tax = (int)(subTotal * 0.03);
+
+                    textBoxTax.Text = tax.ToString();
+                }
+
             }
-
-
 
         }
 
         private void textBoxTax_TextChanged(object sender, EventArgs e)
         {
-            int subTotal = Convert.ToInt32(textBoxSubTotal.Text);
-            int tax = Convert.ToInt32(textBoxTax.Text);
+            if (string.IsNullOrEmpty(textBoxTax.Text) == true)
+            {
 
-            int totalCost = subTotal + tax;
+            }
+            else
+            {
+                int subTotal = Convert.ToInt32(textBoxSubTotal.Text);
+                int tax = Convert.ToInt32(textBoxTax.Text);
 
-            textBoxTotalCost.Text = totalCost.ToString();
+                int totalCost = subTotal + tax;
+
+                textBoxTotalCost.Text = totalCost.ToString();
+            }
         }
 
         void GridViewColumnAdd()
@@ -167,6 +208,65 @@ namespace ShoppingMart_WinFormApps
         private void btnAdd_Click(object sender, EventArgs e)
         {
             AddDataToGridview((++srNo).ToString(), comboBoxSelectItem.SelectedItem.ToString(), textBoxUnitPrice.Text.ToString(), textBoxDiscountPerItem.Text, textBoxQuantity.Text, textBoxSubTotal.Text, textBoxTax.Text, textBoxTotalCost.Text);
+            ResetControl();
+
+            CalculateFinalCost();
+        }
+
+        void ResetControl()
+        {
+            comboBoxSelectItem.SelectedItem = null;
+            textBoxUnitPrice.Clear();
+            textBoxDiscountPerItem.Clear();
+            textBoxQuantity.Clear();
+            textBoxSubTotal.Clear();
+            textBoxTax.Clear();
+            textBoxTotalCost.Clear();
+
+            textBoxFinalCost.Clear();
+            textBoxAmountPaid.Clear();
+            textBoxChange.Clear();
+            textBoxQuantity.Enabled = false;
+        }
+
+
+        void CalculateFinalCost()
+        {
+            finalCost = 0;
+            for (int i = 0; i < dataGridViewItemAdd.Rows.Count; i++)
+            {
+                finalCost = finalCost + Convert.ToInt32(dataGridViewItemAdd.Rows[i].Cells[7].Value);
+                textBoxFinalCost.Text = finalCost.ToString();
+            }
+        }
+
+        private void textBoxAmountPaid_TextChanged(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(textBoxAmountPaid.Text) == true)
+            {
+
+            }
+            else
+            {
+                int amountPaid = Convert.ToInt32(textBoxAmountPaid.Text);
+                int fCost = Convert.ToInt32(textBoxFinalCost.Text);
+
+                int changeAmount = amountPaid - fCost;  
+
+                textBoxChange.Text = changeAmount.ToString();
+
+            }
+        }
+
+        private void btnReset_Click(object sender, EventArgs e)
+        {
+            ResetControl();
+        }
+
+        private void btnClear_Click(object sender, EventArgs e)
+        {
+            dataGridViewItemAdd.Rows.Clear();
+            srNo = 0;
         }
     }
 }

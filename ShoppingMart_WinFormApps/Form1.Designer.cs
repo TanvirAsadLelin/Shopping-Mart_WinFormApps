@@ -57,6 +57,7 @@
             this.btnReset = new System.Windows.Forms.Button();
             this.dataGridViewItemAdd = new System.Windows.Forms.DataGridView();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.btnClear = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewItemAdd)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -262,6 +263,7 @@
             this.textBoxAmountPaid.Name = "textBoxAmountPaid";
             this.textBoxAmountPaid.Size = new System.Drawing.Size(206, 27);
             this.textBoxAmountPaid.TabIndex = 8;
+            this.textBoxAmountPaid.TextChanged += new System.EventHandler(this.textBoxAmountPaid_TextChanged);
             // 
             // label13
             // 
@@ -312,6 +314,7 @@
             this.btnReset.TabIndex = 5;
             this.btnReset.Text = "Reset";
             this.btnReset.UseVisualStyleBackColor = true;
+            this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
             // 
             // dataGridViewItemAdd
             // 
@@ -335,6 +338,17 @@
             this.pictureBox1.TabIndex = 10;
             this.pictureBox1.TabStop = false;
             // 
+            // btnClear
+            // 
+            this.btnClear.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnClear.Location = new System.Drawing.Point(821, 610);
+            this.btnClear.Name = "btnClear";
+            this.btnClear.Size = new System.Drawing.Size(116, 44);
+            this.btnClear.TabIndex = 5;
+            this.btnClear.Text = "Clear";
+            this.btnClear.UseVisualStyleBackColor = true;
+            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -342,6 +356,7 @@
             this.ClientSize = new System.Drawing.Size(994, 1008);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.dataGridViewItemAdd);
+            this.Controls.Add(this.btnClear);
             this.Controls.Add(this.btnReset);
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.comboBoxSelectItem);
@@ -407,6 +422,7 @@
         private System.Windows.Forms.Button btnReset;
         private System.Windows.Forms.DataGridView dataGridViewItemAdd;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Button btnClear;
     }
 }
 
