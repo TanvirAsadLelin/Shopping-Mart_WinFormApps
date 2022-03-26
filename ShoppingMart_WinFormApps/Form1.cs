@@ -15,7 +15,7 @@ namespace ShoppingMart_WinFormApps
 {
     public partial class Form1 : Form
     {
-
+        int srNo = 0;
         int tax = 0;
 
         string cs = ConfigurationManager.ConnectionStrings["DBConnectionstring"].ConnectionString;
@@ -23,6 +23,7 @@ namespace ShoppingMart_WinFormApps
         {
             InitializeComponent();
             GetItem();
+            GridViewColumnAdd();
         }
 
         void GetItem()
@@ -141,6 +142,31 @@ namespace ShoppingMart_WinFormApps
             int totalCost = subTotal + tax;
 
             textBoxTotalCost.Text = totalCost.ToString();
+        }
+
+        void GridViewColumnAdd()
+        {
+            dataGridViewItemAdd.ColumnCount = 8;
+            dataGridViewItemAdd.Columns[0].Name = "SR NO.";
+            dataGridViewItemAdd.Columns[1].Name = "Item Name";
+            dataGridViewItemAdd.Columns[2].Name = "Unit Price";
+            dataGridViewItemAdd.Columns[3].Name = "Discount";
+            dataGridViewItemAdd.Columns[4].Name = "Quantity";
+            dataGridViewItemAdd.Columns[5].Name = "Sub Total";
+            dataGridViewItemAdd.Columns[6].Name = "Tax";
+            dataGridViewItemAdd.Columns[7].Name = "Total Cost";
+        }
+
+        void AddDataToGridview(string sr_no , string itemName, string unitPrice, string discount,string quantity, string subTotal, string tax, string totalCost)
+        {
+            string[] row = {sr_no,itemName,unitPrice,discount,quantity,subTotal,tax, totalCost };
+
+            dataGridViewItemAdd.Rows.Add(row);
+        }
+
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            AddDataToGridview((++srNo).ToString(), comboBoxSelectItem.SelectedItem.ToString(), textBoxUnitPrice.Text.ToString(), textBoxDiscountPerItem.Text, textBoxQuantity.Text, textBoxSubTotal.Text, textBoxTax.Text, textBoxTotalCost.Text);
         }
     }
 }
