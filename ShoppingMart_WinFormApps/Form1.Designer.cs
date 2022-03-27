@@ -58,6 +58,7 @@
             this.dataGridViewItemAdd = new System.Windows.Forms.DataGridView();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnClear = new System.Windows.Forms.Button();
+            this.btnInsert = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewItemAdd)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -163,10 +164,12 @@
             this.textBoxQuantity.Enabled = false;
             this.textBoxQuantity.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBoxQuantity.Location = new System.Drawing.Point(346, 254);
+            this.textBoxQuantity.MaxLength = 2;
             this.textBoxQuantity.Name = "textBoxQuantity";
             this.textBoxQuantity.Size = new System.Drawing.Size(206, 27);
             this.textBoxQuantity.TabIndex = 3;
             this.textBoxQuantity.TextChanged += new System.EventHandler(this.textBoxQuantity_TextChanged);
+            this.textBoxQuantity.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxQuantity_KeyPress);
             // 
             // label8
             // 
@@ -264,6 +267,7 @@
             this.textBoxAmountPaid.Size = new System.Drawing.Size(206, 27);
             this.textBoxAmountPaid.TabIndex = 8;
             this.textBoxAmountPaid.TextChanged += new System.EventHandler(this.textBoxAmountPaid_TextChanged);
+            this.textBoxAmountPaid.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxAmountPaid_KeyPress);
             // 
             // label13
             // 
@@ -349,6 +353,17 @@
             this.btnClear.UseVisualStyleBackColor = true;
             this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
             // 
+            // btnInsert
+            // 
+            this.btnInsert.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnInsert.Location = new System.Drawing.Point(346, 597);
+            this.btnInsert.Name = "btnInsert";
+            this.btnInsert.Size = new System.Drawing.Size(116, 44);
+            this.btnInsert.TabIndex = 5;
+            this.btnInsert.Text = "Insert";
+            this.btnInsert.UseVisualStyleBackColor = true;
+            this.btnInsert.Click += new System.EventHandler(this.btnInsert_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -357,6 +372,7 @@
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.dataGridViewItemAdd);
             this.Controls.Add(this.btnClear);
+            this.Controls.Add(this.btnInsert);
             this.Controls.Add(this.btnReset);
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.comboBoxSelectItem);
@@ -423,6 +439,7 @@
         private System.Windows.Forms.DataGridView dataGridViewItemAdd;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Button btnClear;
+        private System.Windows.Forms.Button btnInsert;
     }
 }
 

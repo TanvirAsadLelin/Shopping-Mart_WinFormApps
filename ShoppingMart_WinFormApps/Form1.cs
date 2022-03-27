@@ -294,5 +294,70 @@ namespace ShoppingMart_WinFormApps
                 con.Close();
             }
         }
+
+        private void btnInsert_Click(object sender, EventArgs e)
+        {
+            SqlConnection con = new SqlConnection(cs);
+            string queryInsert = "insert into OrderMaster_Tbl values(@invoiceId,@userName,@dateTime,@finalCost)";
+
+            SqlCommand cmd = new SqlCommand(queryInsert, con);
+
+            cmd.Parameters.AddWithValue("@invoiceId", textBoxInvoiceNo.Text);
+            cmd.Parameters.AddWithValue("@userName", textBoxUser.Text);
+            cmd.Parameters.AddWithValue("@dateTime", DateTime.Now.ToString());
+            cmd.Parameters.AddWithValue("@finalCost", textBoxFinalCost.Text);
+
+            con.Open();
+
+            int value =cmd.ExecuteNonQuery();
+            if(value > 0)
+            {
+                MessageBox.Show("Insert Successfuly","Success",MessageBoxButtons.OK,MessageBoxIcon.Information);
+                GetInvoiceID();
+                ResetControl();
+            }
+            else
+            {
+                MessageBox.Show("Insertion failed", "Fail", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+
+            con.Close();
+
+        }
+
+        private void textBoxQuantity_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char ch  = e.KeyChar;
+            if(char.IsDigit(ch) == true)
+            {
+                e.Handled = false;
+            }
+            else if (ch == 8)
+            {
+                e.Handled = false;
+            }
+            else
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void textBoxAmountPaid_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char ch = e.KeyChar;
+            if(char.IsDigit(ch) == true)
+            {
+                e.Handled=false;
+            }
+
+            else if (ch == 8)
+            {
+                e.Handled = false;
+            }
+            else
+            {
+                e.Handled |= true;
+            }
+        }
     }
 }
