@@ -359,5 +359,19 @@ namespace ShoppingMart_WinFormApps
                 e.Handled |= true;
             }
         }
+
+        private void btnPrintPreview_Click(object sender, EventArgs e)
+        {
+            printPreviewDialogInvoice.Document = printDocumentInvoice;
+            printPreviewDialogInvoice.ShowDialog();
+        }
+
+        private void printDocumentInvoice_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
+        {
+            Bitmap bitmap = Properties.Resources.Lillian_removebg_preview;
+            Image image = bitmap;
+            e.Graphics.DrawImage(image, 30, 5,800,225);
+
+        }
     }
 }

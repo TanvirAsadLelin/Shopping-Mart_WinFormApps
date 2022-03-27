@@ -59,6 +59,10 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnClear = new System.Windows.Forms.Button();
             this.btnInsert = new System.Windows.Forms.Button();
+            this.btnPrintPreview = new System.Windows.Forms.Button();
+            this.btnPrint = new System.Windows.Forms.Button();
+            this.printPreviewDialogInvoice = new System.Windows.Forms.PrintPreviewDialog();
+            this.printDocumentInvoice = new System.Drawing.Printing.PrintDocument();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewItemAdd)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -312,7 +316,7 @@
             // btnReset
             // 
             this.btnReset.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnReset.Location = new System.Drawing.Point(213, 597);
+            this.btnReset.Location = new System.Drawing.Point(201, 597);
             this.btnReset.Name = "btnReset";
             this.btnReset.Size = new System.Drawing.Size(116, 44);
             this.btnReset.TabIndex = 5;
@@ -364,6 +368,41 @@
             this.btnInsert.UseVisualStyleBackColor = true;
             this.btnInsert.Click += new System.EventHandler(this.btnInsert_Click);
             // 
+            // btnPrintPreview
+            // 
+            this.btnPrintPreview.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPrintPreview.Location = new System.Drawing.Point(628, 452);
+            this.btnPrintPreview.Name = "btnPrintPreview";
+            this.btnPrintPreview.Size = new System.Drawing.Size(116, 77);
+            this.btnPrintPreview.TabIndex = 5;
+            this.btnPrintPreview.Text = "Print Preview";
+            this.btnPrintPreview.UseVisualStyleBackColor = true;
+            this.btnPrintPreview.Click += new System.EventHandler(this.btnPrintPreview_Click);
+            // 
+            // btnPrint
+            // 
+            this.btnPrint.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPrint.Location = new System.Drawing.Point(774, 452);
+            this.btnPrint.Name = "btnPrint";
+            this.btnPrint.Size = new System.Drawing.Size(116, 77);
+            this.btnPrint.TabIndex = 5;
+            this.btnPrint.Text = "Print";
+            this.btnPrint.UseVisualStyleBackColor = true;
+            // 
+            // printPreviewDialogInvoice
+            // 
+            this.printPreviewDialogInvoice.AutoScrollMargin = new System.Drawing.Size(0, 0);
+            this.printPreviewDialogInvoice.AutoScrollMinSize = new System.Drawing.Size(0, 0);
+            this.printPreviewDialogInvoice.ClientSize = new System.Drawing.Size(400, 300);
+            this.printPreviewDialogInvoice.Enabled = true;
+            this.printPreviewDialogInvoice.Icon = ((System.Drawing.Icon)(resources.GetObject("printPreviewDialogInvoice.Icon")));
+            this.printPreviewDialogInvoice.Name = "printPreviewDialogInvoice";
+            this.printPreviewDialogInvoice.Visible = false;
+            // 
+            // printDocumentInvoice
+            // 
+            this.printDocumentInvoice.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocumentInvoice_PrintPage);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -372,6 +411,8 @@
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.dataGridViewItemAdd);
             this.Controls.Add(this.btnClear);
+            this.Controls.Add(this.btnPrint);
+            this.Controls.Add(this.btnPrintPreview);
             this.Controls.Add(this.btnInsert);
             this.Controls.Add(this.btnReset);
             this.Controls.Add(this.btnAdd);
@@ -440,6 +481,10 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Button btnClear;
         private System.Windows.Forms.Button btnInsert;
+        private System.Windows.Forms.Button btnPrintPreview;
+        private System.Windows.Forms.Button btnPrint;
+        private System.Windows.Forms.PrintPreviewDialog printPreviewDialogInvoice;
+        private System.Drawing.Printing.PrintDocument printDocumentInvoice;
     }
 }
 
