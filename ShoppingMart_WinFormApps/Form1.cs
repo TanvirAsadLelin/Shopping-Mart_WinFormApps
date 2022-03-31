@@ -207,11 +207,22 @@ namespace ShoppingMart_WinFormApps
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
-        {
-            AddDataToGridview((++srNo).ToString(), comboBoxSelectItem.SelectedItem.ToString(), textBoxUnitPrice.Text.ToString(), textBoxDiscountPerItem.Text, textBoxQuantity.Text, textBoxSubTotal.Text, textBoxTax.Text, textBoxTotalCost.Text);
-            ResetControl();
+        {   
 
-            CalculateFinalCost();
+            if(comboBoxSelectItem.SelectedItem != null)
+            {
+                AddDataToGridview((++srNo).ToString(), comboBoxSelectItem.SelectedItem.ToString(), textBoxUnitPrice.Text.ToString(), textBoxDiscountPerItem.Text, textBoxQuantity.Text, textBoxSubTotal.Text, textBoxTax.Text, textBoxTotalCost.Text);
+                ResetControl();
+
+                CalculateFinalCost();
+            }
+
+            else
+            {
+                MessageBox.Show ("Plaase select your item!","Select",MessageBoxButtons.OK,MessageBoxIcon.Information);
+
+            }
+            
         }
 
         void ResetControl()
@@ -237,8 +248,9 @@ namespace ShoppingMart_WinFormApps
             for (int i = 0; i < dataGridViewItemAdd.Rows.Count; i++)
             {
                 finalCost = finalCost + Convert.ToInt32(dataGridViewItemAdd.Rows[i].Cells[7].Value);
-                textBoxFinalCost.Text = finalCost.ToString();
+               
             }
+            textBoxFinalCost.Text = finalCost.ToString();
 
         }
 
@@ -447,7 +459,7 @@ namespace ShoppingMart_WinFormApps
                 {
                     try
                     {
-                        e.Graphics.DrawString(dataGridViewItemAdd.Rows[i].Cells[3].Value.ToString(), new Font("Arial", 15, FontStyle.Bold), Brushes.Black, new Point(460, gap2));
+                        e.Graphics.DrawString(dataGridViewItemAdd.Rows[i].Cells[4].Value.ToString(), new Font("Arial", 15, FontStyle.Bold), Brushes.Black, new Point(460, gap2));
                         gap2 = gap2 + 30;
                     }
                     catch
@@ -469,7 +481,7 @@ namespace ShoppingMart_WinFormApps
                 {
                     try
                     {
-                        e.Graphics.DrawString(dataGridViewItemAdd.Rows[i].Cells[4].Value.ToString(), new Font("Arial", 15, FontStyle.Bold), Brushes.Black, new Point(660, gap3));
+                        e.Graphics.DrawString(dataGridViewItemAdd.Rows[i].Cells[3].Value.ToString(), new Font("Arial", 15, FontStyle.Bold), Brushes.Black, new Point(660, gap3));
                         gap3 = gap3 + 30;
                     }
                     catch
@@ -483,11 +495,40 @@ namespace ShoppingMart_WinFormApps
 
             }
 
+            int  subTotalPrint = 0;
+            for (int i = 0; i < dataGridViewItemAdd.Rows.Count; i++)
+            {
+                subTotalPrint = subTotalPrint + Convert.ToInt32(dataGridViewItemAdd.Rows[i].Cells[5].Value);
+
+            }
+
+            e.Graphics.DrawString("-------------------------------------------------------------------------------------------------------------", new Font("Arial", 15, FontStyle.Bold), Brushes.Black, new Point(30, 800));
+
+            
+            
+            e.Graphics.DrawString("Sub Total: " + subTotalPrint.ToString(), new Font("Arial", 15, FontStyle.Bold), Brushes.Black, new Point(30, 830));
+
+            int taxPrint = 0;
+            for (int i = 0; i < dataGridViewItemAdd.Rows.Count; i++)
+            {
+                taxPrint = taxPrint + Convert.ToInt32(dataGridViewItemAdd.Rows[i].Cells[6].Value);
+
+            }
+
+            e.Graphics.DrawString("Tax: " + taxPrint.ToString(), new Font("Arial", 15, FontStyle.Bold), Brushes.Black, new Point(30, 860));
+            e.Graphics.DrawString("Final cost: " + textBoxFinalCost.Text, new Font("Arial", 15, FontStyle.Bold), Brushes.Black, new Point(30, 890));
 
 
+            e.Graphics.DrawString("-------------------------------------------------------------------------------------------------------------", new Font("Arial", 15, FontStyle.Bold), Brushes.Black, new Point(30, 920));
 
+            e.Graphics.DrawString("Amount paid: " + textBoxAmountPaid.Text, new Font("Arial", 15, FontStyle.Bold), Brushes.Black, new Point(30,950));
+            e.Graphics.DrawString("Change: " + textBoxChange.Text, new Font("Arial", 15, FontStyle.Bold), Brushes.Black, new Point(30, 980));
 
+        }
 
+        private void btnPrint_Click(object sender, EventArgs e)
+        {
+            printDocumentInvoice.Print();
         }
     }
 }
