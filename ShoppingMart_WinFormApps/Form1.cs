@@ -239,6 +239,7 @@ namespace ShoppingMart_WinFormApps
                 finalCost = finalCost + Convert.ToInt32(dataGridViewItemAdd.Rows[i].Cells[7].Value);
                 textBoxFinalCost.Text = finalCost.ToString();
             }
+
         }
 
         private void textBoxAmountPaid_TextChanged(object sender, EventArgs e)
@@ -367,10 +368,125 @@ namespace ShoppingMart_WinFormApps
         }
 
         private void printDocumentInvoice_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
-        {
+        {   
+
             Bitmap bitmap = Properties.Resources.Lillian_removebg_preview;
             Image image = bitmap;
             e.Graphics.DrawImage(image, 30, 5,800,225);
+            e.Graphics.DrawString("Invoice Id: " + textBoxInvoiceNo.Text, new Font("Arial", 15, FontStyle.Bold), Brushes.Black, new Point(30, 300));
+            e.Graphics.DrawString("Username: " + textBoxUser.Text, new Font("Arial", 15, FontStyle.Bold), Brushes.Black, new Point(30, 330));
+            e.Graphics.DrawString("Date: " + DateTime.Now.ToShortDateString(), new Font("Arial", 15, FontStyle.Bold), Brushes.Black, new Point(30, 360));
+            e.Graphics.DrawString("Time: " + DateTime.Now.ToLongTimeString(), new Font("Arial", 15, FontStyle.Bold), Brushes.Black, new Point(30, 390));
+            e.Graphics.DrawString("-------------------------------------------------------------------------------------------------------------", new Font("Arial", 15, FontStyle.Bold), Brushes.Black, new Point(30, 420));
+            e.Graphics.DrawString("Item", new Font("Arial", 15, FontStyle.Bold), Brushes.Black, new Point(30, 450));
+            e.Graphics.DrawString("Price", new Font("Arial", 15, FontStyle.Bold), Brushes.Black, new Point(230, 450));
+            e.Graphics.DrawString("Quantity", new Font("Arial", 15, FontStyle.Bold), Brushes.Black, new Point(430, 450));
+            e.Graphics.DrawString("Discount", new Font("Arial", 15, FontStyle.Bold), Brushes.Black, new Point(630, 450));
+            e.Graphics.DrawString("-------------------------------------------------------------------------------------------------------------", new Font("Arial", 15, FontStyle.Bold), Brushes.Black, new Point(30, 480));
+
+           
+            // Item name add in printview control
+            int gap = 510;
+
+            if (dataGridViewItemAdd.Rows.Count > 0 )
+            {
+                for (int i = 0; i < dataGridViewItemAdd.Rows.Count; i++)
+                {   
+                    //if (dataGridViewItemAdd.Rows[i].Cells[1].Value.ToString() == null)
+                    //{
+                        try
+                        {
+                            e.Graphics.DrawString(dataGridViewItemAdd.Rows[i].Cells[1].Value.ToString(), new Font("Arial", 15, FontStyle.Bold), Brushes.Black, new Point(30, gap));
+                            gap = gap + 30;
+                        }
+                        catch
+                        {
+
+                        }
+                    //}
+                    //else
+                    //{
+                    //    MessageBox.Show("Hello null");
+                    //}
+
+
+                    //MessageBox.Show(dataGridViewItemAdd.Rows[i].Cells[1].Value.ToString());
+
+                }
+              
+            }
+
+            // Item price add in printview control
+            int gap1 = 510;
+
+            if (dataGridViewItemAdd.Rows.Count > 0)
+            {
+                for (int i = 0; i < dataGridViewItemAdd.Rows.Count; i++)
+                {
+                    try
+                    {
+                        e.Graphics.DrawString(dataGridViewItemAdd.Rows[i].Cells[2].Value.ToString(), new Font("Arial", 15, FontStyle.Bold), Brushes.Black, new Point(243, gap1));
+                        gap1 = gap1 + 30;
+                    }
+                    catch
+                    {
+
+                    }
+
+                    //MessageBox.Show(dataGridViewItemAdd.Rows[i].Cells[1].Value.ToString());
+
+                }
+
+            }
+            // Item Discount  add in printview control
+            int gap2 = 510;
+
+            if (dataGridViewItemAdd.Rows.Count > 0)
+            {
+                for (int i = 0; i < dataGridViewItemAdd.Rows.Count; i++)
+                {
+                    try
+                    {
+                        e.Graphics.DrawString(dataGridViewItemAdd.Rows[i].Cells[3].Value.ToString(), new Font("Arial", 15, FontStyle.Bold), Brushes.Black, new Point(460, gap2));
+                        gap2 = gap2 + 30;
+                    }
+                    catch
+                    {
+
+                    }
+
+                    //MessageBox.Show(dataGridViewItemAdd.Rows[i].Cells[1].Value.ToString());
+
+                }
+
+            }
+            // Item Quantity add in printview control
+            int gap3 = 510;
+
+            if (dataGridViewItemAdd.Rows.Count > 0)
+            {
+                for (int i = 0; i < dataGridViewItemAdd.Rows.Count; i++)
+                {
+                    try
+                    {
+                        e.Graphics.DrawString(dataGridViewItemAdd.Rows[i].Cells[4].Value.ToString(), new Font("Arial", 15, FontStyle.Bold), Brushes.Black, new Point(660, gap3));
+                        gap3 = gap3 + 30;
+                    }
+                    catch
+                    {
+
+                    }
+
+                    //MessageBox.Show(dataGridViewItemAdd.Rows[i].Cells[1].Value.ToString());
+
+                }
+
+            }
+
+
+
+
+
 
         }
     }
