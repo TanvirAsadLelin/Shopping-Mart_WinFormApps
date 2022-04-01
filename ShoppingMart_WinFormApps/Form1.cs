@@ -548,5 +548,17 @@ namespace ShoppingMart_WinFormApps
         {
             Application.Exit();
         }
+
+        private void editItemToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            EditItemForm editItemForm = new EditItemForm();
+            editItemForm.ShowDialog();
+        }
+
+        private void viewDataToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ViewDataForm viewDataForm = new ViewDataForm();
+            viewDataForm.ShowDialog();
+        }
     }
 }

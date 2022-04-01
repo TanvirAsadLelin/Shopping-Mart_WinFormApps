@@ -306,6 +306,8 @@
             // 
             // comboBoxSelectItem
             // 
+            this.comboBoxSelectItem.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.comboBoxSelectItem.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.comboBoxSelectItem.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBoxSelectItem.FormattingEnabled = true;
             this.comboBoxSelectItem.Location = new System.Drawing.Point(62, 471);
@@ -434,7 +436,7 @@
             this.editToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.editItemToolStripMenuItem});
             this.editToolStripMenuItem.Name = "editToolStripMenuItem";
-            this.editToolStripMenuItem.Size = new System.Drawing.Size(49, 26);
+            this.editToolStripMenuItem.Size = new System.Drawing.Size(49, 24);
             this.editToolStripMenuItem.Text = "Edit";
             // 
             // vIewToolStripMenuItem
@@ -442,7 +444,7 @@
             this.vIewToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.viewDataToolStripMenuItem});
             this.vIewToolStripMenuItem.Name = "vIewToolStripMenuItem";
-            this.vIewToolStripMenuItem.Size = new System.Drawing.Size(55, 26);
+            this.vIewToolStripMenuItem.Size = new System.Drawing.Size(55, 24);
             this.vIewToolStripMenuItem.Text = "VIew";
             // 
             // aboutToolStripMenuItem
@@ -451,7 +453,7 @@
             this.helpToolStripMenuItem,
             this.versionToolStripMenuItem});
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(64, 26);
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(64, 24);
             this.aboutToolStripMenuItem.Text = "About";
             // 
             // addItemToolStripMenuItem
@@ -464,7 +466,7 @@
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(154, 26);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
@@ -473,12 +475,14 @@
             this.editItemToolStripMenuItem.Name = "editItemToolStripMenuItem";
             this.editItemToolStripMenuItem.Size = new System.Drawing.Size(152, 26);
             this.editItemToolStripMenuItem.Text = "Edit Item";
+            this.editItemToolStripMenuItem.Click += new System.EventHandler(this.editItemToolStripMenuItem_Click);
             // 
             // viewDataToolStripMenuItem
             // 
             this.viewDataToolStripMenuItem.Name = "viewDataToolStripMenuItem";
-            this.viewDataToolStripMenuItem.Size = new System.Drawing.Size(160, 26);
+            this.viewDataToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.viewDataToolStripMenuItem.Text = "View Data";
+            this.viewDataToolStripMenuItem.Click += new System.EventHandler(this.viewDataToolStripMenuItem_Click);
             // 
             // helpToolStripMenuItem
             // 
@@ -543,7 +547,7 @@
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Form1";
+            this.Text = "Shop Control All Operation";
             this.Activated += new System.EventHandler(this.Form1_Activated);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewItemAdd)).EndInit();
             this.menuStrip1.ResumeLayout(false);
