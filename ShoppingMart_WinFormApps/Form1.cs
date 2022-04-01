@@ -31,7 +31,8 @@ namespace ShoppingMart_WinFormApps
         }
 
         void GetItem()
-        {
+        {   
+            comboBoxSelectItem.Items.Clear();
             SqlConnection con = new SqlConnection(cs);
             string querySelect = "select * from Items_Tbl";
             SqlCommand cmd = new SqlCommand(querySelect, con);
@@ -46,6 +47,7 @@ namespace ShoppingMart_WinFormApps
                 comboBoxSelectItem.Items.Add(itemName);
             }
 
+            comboBoxSelectItem.Sorted = true;
             con.Close();
         }
 
@@ -529,6 +531,22 @@ namespace ShoppingMart_WinFormApps
         private void btnPrint_Click(object sender, EventArgs e)
         {
             printDocumentInvoice.Print();
+        }
+
+        private void addItemToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AddItemForm addItemForm = new AddItemForm();
+            addItemForm.ShowDialog();
+        }
+
+        private void Form1_Activated(object sender, EventArgs e)
+        {
+            GetItem();
+        }
+
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

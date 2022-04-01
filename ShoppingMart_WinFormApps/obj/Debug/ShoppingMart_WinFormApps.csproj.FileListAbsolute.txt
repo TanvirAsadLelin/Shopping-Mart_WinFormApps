@@ -11,3 +11,4 @@ D:\My GitHub\My WinFormApps All Projects\ShoppingMart_WinFormApps\ShoppingMart_W
 D:\My GitHub\My WinFormApps All Projects\ShoppingMart_WinFormApps\ShoppingMart_WinFormApps\obj\Debug\ShoppingMart_WinFormApps.pdb
 D:\My GitHub\My WinFormApps All Projects\ShoppingMart_WinFormApps\ShoppingMart_WinFormApps\obj\Debug\ShoppingMart_WinFormApps.LoginForm.resources
 D:\My GitHub\My WinFormApps All Projects\ShoppingMart_WinFormApps\ShoppingMart_WinFormApps\obj\Debug\ShoppingMart_WinFormApps.SignUpForm.resources
+D:\My GitHub\My WinFormApps All Projects\ShoppingMart_WinFormApps\ShoppingMart_WinFormApps\obj\Debug\ShoppingMart_WinFormApps.AddItemForm.resources
