@@ -14,3 +14,4 @@ D:\My GitHub\My WinFormApps All Projects\ShoppingMart_WinFormApps\ShoppingMart_W
 D:\My GitHub\My WinFormApps All Projects\ShoppingMart_WinFormApps\ShoppingMart_WinFormApps\obj\Debug\ShoppingMart_WinFormApps.AddItemForm.resources
 D:\My GitHub\My WinFormApps All Projects\ShoppingMart_WinFormApps\ShoppingMart_WinFormApps\obj\Debug\ShoppingMart_WinFormApps.EditItemForm.resources
 D:\My GitHub\My WinFormApps All Projects\ShoppingMart_WinFormApps\ShoppingMart_WinFormApps\obj\Debug\ShoppingMart_WinFormApps.ViewDataForm.resources
+D:\My GitHub\My WinFormApps All Projects\ShoppingMart_WinFormApps\ShoppingMart_WinFormApps\obj\Debug\ShoppingMart_WinFormApps.DetailsSearchForm.resources

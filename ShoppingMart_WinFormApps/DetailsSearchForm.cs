@@ -19,10 +19,22 @@ namespace ShoppingMart_WinFormApps
         public DetailsSearchForm()
         {
             InitializeComponent();
+            BindGridviewBothData();
         }
 
         void BindGridviewBothData()
         {
+            SqlConnection con =  new SqlConnection(cs);
+            string queryStoreProcedure = "getBothTablesData_Sp";
+            SqlCommand cmd = new SqlCommand(queryStoreProcedure, con);
+            cmd.CommandType = CommandType.StoredProcedure;
+            SqlDataAdapter adapter = new SqlDataAdapter();
+            adapter.SelectCommand = cmd;
+            DataTable table = new DataTable();
+            adapter.Fill(table);
+            dataGridViewBothTableDataShow.DataSource = table;
+            dataGridViewBothTableDataShow.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+
 
         }
     }

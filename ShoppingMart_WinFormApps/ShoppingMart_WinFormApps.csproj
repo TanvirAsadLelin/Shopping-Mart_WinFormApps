@@ -53,6 +53,12 @@
     <Compile Include="AddItemForm.Designer.cs">
       <DependentUpon>AddItemForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="DetailsSearchForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DetailsSearchForm.Designer.cs">
+      <DependentUpon>DetailsSearchForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="EditItemForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -87,6 +93,9 @@
     </Compile>
     <EmbeddedResource Include="AddItemForm.resx">
       <DependentUpon>AddItemForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DetailsSearchForm.resx">
+      <DependentUpon>DetailsSearchForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="EditItemForm.resx">
       <DependentUpon>EditItemForm.cs</DependentUpon>
