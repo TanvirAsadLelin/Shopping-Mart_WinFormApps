@@ -337,7 +337,70 @@ namespace ShoppingMart_WinFormApps
             }
 
             con.Close();
+            InsertIntoOrderDeatils();
 
+        }
+
+        int GetLastInvoiceId()
+        {
+            SqlConnection con = new SqlConnection(cs);
+
+            string query = "select max(Invoice_Id) from OrderMaster_Tbl";
+
+            SqlCommand cmd  = new SqlCommand(query, con);
+
+            con.Open();
+            int maxInvoiceId = Convert.ToInt32( cmd.ExecuteScalar());
+            
+            con.Close();
+
+            return maxInvoiceId;
+
+            
+        }
+
+        void InsertIntoOrderDeatils()
+        {
+            int value = 0;
+            SqlConnection con = new SqlConnection(cs);
+
+            try
+            {
+
+
+                for (int i = 0; i < dataGridViewItemAdd.Rows.Count; i++)
+                {
+                    string queryInsert = "insert into OrderDetails_Tbl values (@invoiceId, @name, @price, @discount, @quantity, @subTotal, @tax, @totalCost)";
+
+                    SqlCommand cmd = new SqlCommand(queryInsert, con);
+
+                    cmd.Parameters.AddWithValue("@invoiceId", GetLastInvoiceId());
+                    cmd.Parameters.AddWithValue("@name", dataGridViewItemAdd.Rows[i].Cells[1].Value.ToString());
+                    cmd.Parameters.AddWithValue("@price", dataGridViewItemAdd.Rows[i].Cells[2].Value);
+                    cmd.Parameters.AddWithValue("@discount", dataGridViewItemAdd.Rows[i].Cells[3].Value);
+                    cmd.Parameters.AddWithValue("@quantity", dataGridViewItemAdd.Rows[i].Cells[4].Value);
+                    cmd.Parameters.AddWithValue("@subTotal", dataGridViewItemAdd.Rows[i].Cells[5].Value);
+                    cmd.Parameters.AddWithValue("@tax", dataGridViewItemAdd.Rows[i].Cells[6].Value);
+                    cmd.Parameters.AddWithValue("@totalCost", dataGridViewItemAdd.Rows[i].Cells[7].Value);
+
+                    con.Open();
+                    value = value + cmd.ExecuteNonQuery();
+                    con.Close();
+                }
+            }
+            catch
+            {
+
+            }
+            if(value > 0)
+            {
+                MessageBox.Show("Successfuly Inserted");
+            }
+            else
+            {
+                MessageBox.Show("Insertion Failed");
+            }
+            
         }
 
         private void textBoxQuantity_KeyPress(object sender, KeyPressEventArgs e)
@@ -559,6 +622,12 @@ namespace ShoppingMart_WinFormApps
         {
             ViewDataForm viewDataForm = new ViewDataForm();
             viewDataForm.ShowDialog();
+        }
+
+        private void detailsSearchToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DetailsSearchForm detailsSearchForm = new DetailsSearchForm();
+            detailsSearchForm.ShowDialog();
         }
     }
 }
